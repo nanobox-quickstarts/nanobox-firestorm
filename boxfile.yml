@@ -1,0 +1,29 @@
+run.config:
+  engine: elixir
+  dev_packages:
+    - python-2.7.13nb1
+  extra_packages:
+    - nodejs
+    - inotify-tools
+    - git
+  extra_steps:
+    - cd assets && npm install
+  cache_dirs:
+    - node_modules
+
+  fs_watch: true
+
+#
+# deploy.config:
+#   extra_steps:
+#     - npm run build
+#   transform:
+#     - mix compile --force
+
+#
+data.db:
+  image: nanobox/postgresql
+
+#
+web.main:
+  start: mix phx.server

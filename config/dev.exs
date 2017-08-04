@@ -17,9 +17,9 @@ config :firestorm_web, FirestormWeb.Web.Endpoint,
       "--inline",
       "--hot",
       "--stdin",
-      "--host", "localhost",
+      "--host", "#{System.get_env("APP_IP")}",
       "--port", "8080",
-      "--public", "localhost:8080",
+      "--public", "#{System.get_env("APP_IP")}:8080",
       "--config", "webpack.config.js",
       cd: Path.expand("../assets", __DIR__)
     ]
@@ -62,8 +62,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :firestorm_web, FirestormWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "firestorm_web_dev",
-  hostname: "localhost",
+  username: System.get_env("DATA_DB_USER"),
+  password: System.get_env("DATA_DB_PASS"),
+  hostname: System.get_env("DATA_DB_HOST"),
+  database: "gonano",
   pool_size: 10

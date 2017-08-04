@@ -14,7 +14,7 @@ config :firestorm_web, use_pryin: false
 
 # Configures the endpoint
 config :firestorm_web, FirestormWeb.Web.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "#{System.get_env("APP_IP")}"],
   secret_key_base: "Q1bBtoEs8F2+MsssVU8zHXvhJBVFDI/4EFEINldDXBlVsBkNr30gi4WIGNwds+YO",
   render_errors: [view: FirestormWeb.Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: FirestormWeb.PubSub,
